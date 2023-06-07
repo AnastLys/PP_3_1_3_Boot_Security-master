@@ -13,11 +13,12 @@ public class UserDetailsServiceImp implements UserDetailsService {
 
     @Autowired
     private UserServiceImp userServiceImp;
+
     @Transactional
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userServiceImp.findByUsername(username);
-        if (user == null){
+        if (user == null) {
             throw new UsernameNotFoundException(String.format("User '%s' not found", username));
         }
 

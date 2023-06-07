@@ -9,41 +9,42 @@
 <a href="/admin/addUser">Add User</a>
 <br/><br/>
 <div>
-  <table border="1">
-    <tr>
-      <th>id</th>
-      <th>UserName</th>
-      <th>Password</th>
-      <th>First Name</th>
-      <th>Last Name</th>
-      <th>Email</th>
-      <th>Roles</th>
-      <th>Action</th>
-    </tr>
-    <tr th:each ="user : ${users}">
-      <td>
-        <a th:href="@{/admin/show(id=${user.id})}" th:text="${user.id}">
-        <!--<a th:href="@{/admin/show(id=${user.getId()})}" th:text="${user.getId()}">-->
-          <button type="button"> </button> </a>
-      </td>
-      <td th:utext="${user.getUsername()}">...</td>
-      <td th:utext="${user.getPassword()}">...</td>
-      <td th:utext="${user.getFirstName()}">...</td>
-      <td th:utext="${user.getLastName()}">...</td>
-      <td th:utext="${user.getEmail()}">...</td>
-      <td>
-        <ul th:each="role : ${user.roles}">
-          <li th:text="${role.name}">...</li>
-        </ul>
-      </td>
-      <td>
-      <a th:href="@{/admin/edit(id=${user.getId()})}">Edit</a>
-      <a th:href="@{/admin/delete(id=${user.getId()})}">Delete</a>
-      </td>
-    </tr>
-  </table>
-  <br/>
-  <a th:href="@{/logout}">Logout</a>
+    <table border="1">
+        <tr>
+            <th>id</th>
+            <th>UserName</th>
+            <th>Password</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Roles</th>
+            <th>Action</th>
+        </tr>
+        <tr th:each="user : ${users}">
+            <td>
+                <a th:href="@{/admin/show(id=${user.id})}" th:text="${user.id}">
+                    <!--<a th:href="@{/admin/show(id=${user.getId()})}" th:text="${user.getId()}">-->
+                    <button type="button"></button>
+                </a>
+            </td>
+            <td th:utext="${user.getUsername()}">...</td>
+            <td th:utext="${user.getPassword()}">...</td>
+            <td th:utext="${user.getFirstName()}">...</td>
+            <td th:utext="${user.getLastName()}">...</td>
+            <td th:utext="${user.getEmail()}">...</td>
+            <td>
+                <ul th:each="role : ${user.roles}">
+                    <li th:text="${role.name}">...</li>
+                </ul>
+            </td>
+            <td>
+                <a th:href="@{/admin/edit(id=${user.getId()})}">Edit</a>
+                <a th:href="@{/admin/delete(id=${user.getId()})}">Delete</a>
+            </td>
+        </tr>
+    </table>
+    <br/>
+    <a th:href="@{/logout}">Logout</a>
 
 </div>
 </body>

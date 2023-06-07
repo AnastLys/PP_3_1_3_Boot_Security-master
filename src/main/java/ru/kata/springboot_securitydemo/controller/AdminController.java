@@ -10,7 +10,6 @@ import ru.kata.springboot_securitydemo.service.RoleService;
 import ru.kata.springboot_securitydemo.service.UserServiceImp;
 
 
-
 @Controller
 @RequestMapping("/admin")
 public class AdminController {
@@ -20,7 +19,7 @@ public class AdminController {
     private RoleService roleService;
 
     @GetMapping("/")
-    public String userList (Model model){
+    public String userList(Model model) {
         model.addAttribute("users", userServiceImp.listUsers());
         return "userList";
     }
@@ -37,14 +36,15 @@ public class AdminController {
         userServiceImp.addUser(user);
         return "redirect:/admin/";
     }
+
     @GetMapping("/show")
-    public String showUser(ModelMap model, @RequestParam("id") long id){
+    public String showUser(ModelMap model, @RequestParam("id") long id) {
         model.addAttribute("theUser", userServiceImp.findUser(id));
         return "showUser";
     }
 
     @GetMapping("/edit")
-    public String showUserEditPage(ModelMap model, @RequestParam("id") long id){
+    public String showUserEditPage(ModelMap model, @RequestParam("id") long id) {
         model.addAttribute("theUser", userServiceImp.findUser(id));
         model.addAttribute("roles", roleService.getAllRoles());
         return "editUser";
@@ -57,7 +57,7 @@ public class AdminController {
     }
 
     @GetMapping("/delete")
-    public String deleteUser(@RequestParam(required = true, defaultValue = "" ) long id) {
+    public String deleteUser(@RequestParam(required = true, defaultValue = "") long id) {
         userServiceImp.deleteUser(id);
         return "redirect:/admin/";
     }

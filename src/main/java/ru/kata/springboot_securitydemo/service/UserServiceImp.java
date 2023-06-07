@@ -12,13 +12,13 @@ import java.util.List;
 
 
 @Service
-public class UserServiceImp implements  UserService {
+public class UserServiceImp implements UserService {
     @Autowired
     private UserRepository userRepository;
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    public User findByUsername(String username){
+    public User findByUsername(String username) {
         return userRepository.findByUsername(username);
     }
 
@@ -29,21 +29,25 @@ public class UserServiceImp implements  UserService {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
     }
+
     @Transactional
     @Override
     public List<User> listUsers() {
         return userRepository.findAll();
     }
+
     @Transactional
     @Override
-    public User findUser(long id) throws UsernameNotFoundException{
+    public User findUser(long id) throws UsernameNotFoundException {
         return userRepository.findById(id).orElse(null);
     }
+
     @Transactional
     @Override
     public void deleteUser(long id) {
-            userRepository.deleteById(id);
+        userRepository.deleteById(id);
     }
+
     @Transactional
     @Override
     public void updeteUser(User user) {

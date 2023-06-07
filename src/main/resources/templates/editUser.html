@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Edit user</title>
@@ -7,32 +7,32 @@
 <body>
 
 <form method="POST" th:action="@{/admin/edit}" th:object="${theUser}">
-  <input type="hidden" th:field="*{id}" th:value="*{getId()}">
-  <label for="username">Enter username: </label>
-  <input type="text" th:field="*{username}" id="username"/>
-  <br/>
-  <label for="password">Enter password: </label>
-  <input type="password" th:field="*{password}" id="password"/>
-  <br/>
-  <label for="name">Enter name: </label>
-  <input type="text" th:field="*{firstName}" id="name"/>
-  <br/>
-  <label for="lastName">Enter surname: </label>
-  <input type="text" th:field="*{lastName}" id="lastName"/>
-  <br/>
-  <label for="email">Enter email: </label>
-  <input type="text" th:field="*{email}" id="email"/>
-  <br/>
-  <p>
-    <label>Role:
-      <input type="checkbox" name="roles"
-             th:each="role : ${roles}"
-             th:text="${role.name}"
-             th:value="${role.id}"
-             th:checked="${#lists.contains(theUser.roles, role)}"/>
-    </label>
-  </p>
-  <input type="submit" value="Edit"/>
+    <input type="hidden" th:field="*{id}" th:value="*{getId()}">
+    <label for="username">Enter username: </label>
+    <input type="text" th:field="*{username}" id="username"/>
+    <br/>
+    <label for="password">Enter password: </label>
+    <input type="password" th:field="*{password}" id="password"/>
+    <br/>
+    <label for="name">Enter name: </label>
+    <input type="text" th:field="*{firstName}" id="name"/>
+    <br/>
+    <label for="lastName">Enter surname: </label>
+    <input type="text" th:field="*{lastName}" id="lastName"/>
+    <br/>
+    <label for="email">Enter email: </label>
+    <input type="text" th:field="*{email}" id="email"/>
+    <br/>
+    <p>
+        <label>Role:
+            <input type="checkbox" name="roles"
+                   th:each="role : ${roles}"
+                   th:text="${role.name}"
+                   th:value="${role.id}"
+                   th:checked="${#lists.contains(theUser.roles, role)}"/>
+        </label>
+    </p>
+    <input type="submit" value="Edit"/>
 </form>
 <br/>
 <a th:href="@{/logout}">Logout</a>
